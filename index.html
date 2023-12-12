@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IVA - Dem</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="../path/to/flowbite/dist/datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/datepicker.min.js"></script>
   </head>
   <body class="h-full">
@@ -26,12 +25,12 @@
           <nav class="flex flex-1 flex-col">
             <ul role="list" class="flex flex-1 flex-col gap-y-7">
               <li>
-                <ul role="list" class="-mx-2 space-y-1">
-                  <li>
+                <ul role="list" class="-mx-2 space-y-1" id="navigation-items">
+                  <li id="dashboard-list">
                     <!-- Current: "bg-indigo-700 text-white", Default: "text-indigo-200 hover:text-white hover:bg-indigo-700" -->
                     <span
                       onclick="changeTab('dashboard')"
-                      class="bg-indigo-700 text-white group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+                      class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                     >
                       <svg
                         class="h-6 w-6 shrink-0 text-white"
@@ -50,7 +49,7 @@
                       Dashboard
                     </span>
                   </li>
-                  <li>
+                  <li id="location-list">
                     <span
                       onclick="changeTab('location')"
                       class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
@@ -72,7 +71,7 @@
                       Location
                     </span>
                   </li>
-                  <li>
+                  <li id="people-list">
                     <span
                       onclick="changeTab('people')"
                       class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
@@ -94,7 +93,7 @@
                       People
                     </span>
                   </li>
-                  <li>
+                  <li id="object-list">
                     <span
                       onclick="changeTab('object')"
                       class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
@@ -116,7 +115,7 @@
                       Objects
                     </span>
                   </li>
-                  <li>
+                  <li id="alert-list">
                     <span
                       onclick="changeTab('alert')"
                       class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
@@ -139,33 +138,6 @@
                     </span>
                   </li>
                 </ul>
-              </li>
-              <li class="mt-auto">
-                <a
-                  href="#"
-                  class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-indigo-200 hover:bg-indigo-700 hover:text-white"
-                >
-                  <svg
-                    class="h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"
-                    />
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                  Settings
-                </a>
               </li>
             </ul>
           </nav>
@@ -241,14 +213,11 @@
                   </div>
                   <div class="ml-2">
                     <select
-                      id="location"
+                      id="dashboard-location"
                       name="location"
                       class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     >
                       <option>Filter by location</option>
-                      <option>United States</option>
-                      <option>Canada</option>
-                      <option>Mexico</option>
                     </select>
                   </div>
                 </div>
@@ -264,129 +233,32 @@
                               scope="col"
                               class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
                             >
-                              <a href="#" class="group inline-flex">
-                                Location
-                                <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
-                                <span
-                                  class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible"
-                                >
-                                  <svg
-                                    class="h-5 w-5"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                    aria-hidden="true"
-                                  >
-                                    <path
-                                      fill-rule="evenodd"
-                                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                      clip-rule="evenodd"
-                                    />
-                                  </svg>
-                                </span>
-                              </a>
+                              Location
                             </th>
                             <th
                               scope="col"
                               class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                             >
-                              <a href="#" class="group inline-flex">
-                                Footfall
-                                <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
-                                <span
-                                  class="ml-2 flex-none rounded bg-gray-100 text-gray-900 group-hover:bg-gray-200"
-                                >
-                                  <svg
-                                    class="h-5 w-5"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                    aria-hidden="true"
-                                  >
-                                    <path
-                                      fill-rule="evenodd"
-                                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                      clip-rule="evenodd"
-                                    />
-                                  </svg>
-                                </span>
-                              </a>
+                              Date
                             </th>
                             <th
                               scope="col"
                               class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                             >
-                              <a href="#" class="group inline-flex">
-                                Average dwell time
-                                <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
-                                <span
-                                  class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible"
-                                >
-                                  <svg
-                                    class="invisible ml-2 h-5 w-5 flex-none rounded text-gray-400 group-hover:visible group-focus:visible"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                    aria-hidden="true"
-                                  >
-                                    <path
-                                      fill-rule="evenodd"
-                                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                      clip-rule="evenodd"
-                                    />
-                                  </svg>
-                                </span>
-                              </a>
+                              Footfall
                             </th>
                             <th
                               scope="col"
                               class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                             >
-                              <a href="#" class="group inline-flex">
-                                Date time
-                                <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
-                                <span
-                                  class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible"
-                                >
-                                  <svg
-                                    class="invisible ml-2 h-5 w-5 flex-none rounded text-gray-400 group-hover:visible group-focus:visible"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                    aria-hidden="true"
-                                  >
-                                    <path
-                                      fill-rule="evenodd"
-                                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                      clip-rule="evenodd"
-                                    />
-                                  </svg>
-                                </span>
-                              </a>
+                              Average dwell time
                             </th>
                           </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-200 bg-white">
-                          <tr>
-                            <td
-                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
-                            >
-                              Location 1
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              34
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              3.5 minutes
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              10 Dec, 2023, 2:45pm
-                            </td>
-                          </tr>
-                          <!-- More people... -->
-                        </tbody>
+                        <tbody
+                          class="divide-y divide-gray-200 bg-white"
+                          id="dashboard-table"
+                        ></tbody>
                       </table>
                     </div>
                   </div>
@@ -461,18 +333,11 @@
                   </div>
                   <div class="ml-2">
                     <select
-                      id="location"
+                      id="location-location"
                       name="location"
                       class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     >
                       <option>Filter by location</option>
-                      <option>Reception</option>
-                      <option>Cafeteria</option>
-                      <option>Meeting Room 1</option>
-                      <option>Meeting Room 2</option>
-                      <option>Office 1</option>
-                      <option>Office 2</option>
-                      <option>Unknown</option>
                     </select>
                   </div>
                 </div>
@@ -488,7 +353,7 @@
                               scope="col"
                               class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
                             >
-                              Name
+                              Detected ID
                             </th>
                             <th
                               scope="col"
@@ -510,537 +375,285 @@
                             </th>
                           </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-200">
-                          <tr>
-                            <td
-                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
-                            >
-                              prabjyot Sudan
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              1Hr 30Min
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              Reception
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              12th Dec 2023
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
-                            >
-                              Utkarsh Mehta
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              23Min
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              Cafeteria
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              12th Dec 2023
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
-                            >
-                              Ibad Chauhan
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              30Min
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              Meeting Room 1
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              12th Dec 2023
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
-                            >
-                              Basant Mandal
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              2Hr
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              Meeting Room 2
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              12th Dec 2023
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
-                            >
-                              Mushahid Shaikh
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              3Min
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              Reception
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              11th Dec 2023
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
-                            >
-                              Tanzeel Iqbal
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              40Min
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              Reception
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              11th Dec 2023
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
-                            >
-                              Aakash Mishra
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              1Hr 30Min
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              Office 1
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              11th Dec 2023
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
-                            >
-                              Aayushman Khurana
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              1Hr
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              Office 2
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              11th Dec 2023
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
-                            >
-                              Harsh Sawant
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              1hr 45Min
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              Unknown
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              10th Dec 2023
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
-                            >
-                              Utpal Singh
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              13Min
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              Unknown
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              10th Dec 2023
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
-                            >
-                              Arnurag
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              43Min
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              Unknown
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              10th Dec 2023
-                            </td>
-                          </tr>
-                          <tr>
-                            <td
-                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
-                            >
-                              Harsh Kumar Verma
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              2Hr 13Min
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              Unknown
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              10th Dec 2023
-                            </td>
-                          </tr>
-                          <!-- More people... -->
-                        </tbody>
+                        <tbody
+                          class="divide-y divide-gray-200"
+                          id="location-table"
+                        ></tbody>
                       </table>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
             <div id="people" class="">
               <div class="px-4 sm:px-6 lg:px-8">
-                  <div class="sm:flex sm:items-center">
-                      <div class="sm:flex-auto">
-                          <h1 class="text-base font-semibold leading-6 text-gray-900">People</h1>
-                          <p class="mt-2 text-sm text-gray-700">A list of all the users in your account
-                              including their name, location and time.</p>
-                      </div>
-                      <div class="flex justify-end items-end">
-                        <div date-rangepicker class="flex items-center">
-                          <div class="relative">
-                            <div
-                              class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
-                            >
-                              <svg
-                                class="w-4 h-4 text-gray-500"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
-                                />
-                              </svg>
-                            </div>
-                            <input
-                              name="start"
-                              type="text"
-                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-1"
-                              placeholder="Select date start"
-                            />
-                          </div>
-                          <span class="mx-4 text-gray-500">to</span>
-                          <div class="relative">
-                            <div
-                              class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
-                            >
-                              <svg
-                                class="w-4 h-4 text-gray-500"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
-                                />
-                              </svg>
-                            </div>
-                            <input
-                              name="end"
-                              type="text"
-                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-1"
-                              placeholder="Select date end"
-                            />
-                          </div>
-                        </div>
-                        <div class="ml-2">
-                          <select
-                            id="location"
-                            name="location"
-                            class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                <div class="sm:flex sm:items-center">
+                  <div class="sm:flex-auto">
+                    <h1 class="text-base font-semibold leading-6 text-gray-900">
+                      People
+                    </h1>
+                    <p class="mt-2 text-sm text-gray-700">
+                      A list of all the users in your account including their
+                      name, location and time.
+                    </p>
+                  </div>
+                  <div class="flex justify-end items-end">
+                    <div date-rangepicker class="flex items-center">
+                      <div class="relative">
+                        <div
+                          class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+                        >
+                          <svg
+                            class="w-4 h-4 text-gray-500"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
                           >
-                            <option>Filter by location</option>
-                            <option>Mumbai</option>
-                            <option>Pune</option>
-                            <option>Chennai</option>
-                          </select>
+                            <path
+                              d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                            />
+                          </svg>
                         </div>
-                        <div class="ml-2">
-                          <input type="text" name="name" id="name"
-                              class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                              placeholder="Search by name" onkeyup='changeName()'>
+                        <input
+                          name="start"
+                          type="text"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-1"
+                          placeholder="Select date start"
+                        />
+                      </div>
+                      <span class="mx-4 text-gray-500">to</span>
+                      <div class="relative">
+                        <div
+                          class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+                        >
+                          <svg
+                            class="w-4 h-4 text-gray-500"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                            />
+                          </svg>
                         </div>
+                        <input
+                          name="end"
+                          type="text"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-1"
+                          placeholder="Select date end"
+                        />
                       </div>
+                    </div>
+                    <div class="ml-2">
+                      <select
+                        id="people-location"
+                        name="location"
+                        class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      >
+                        <option>Filter by location</option>
+                      </select>
+                    </div>
+                    <div class="ml-2">
+                      <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        placeholder="Search by name"
+                        onkeyup="changeName()"
+                      />
+                    </div>
                   </div>
-                  <div class="mt-8 flow-root">
-                      <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                          <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                              <table class="min-w-full divide-y divide-gray-300">
-                                  <thead>
-                                      <tr>
-                                          <th scope="col"
-                                              class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
-                                              Name</th>
-                                          <th scope="col"
-                                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                              Location</th>
-                                          <th scope="col"
-                                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                              Time Stamp</th>
-                                      </tr>
-                                  </thead>
-                                  <tbody class="divide-y divide-gray-200" id="peoplestable">
-                                      <tr>
-                                          <td
-                                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                              Basant Mandal</td>
-                                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Mumbai
-                                          </td>
-                                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">11:00
-                                              AM - 11:45 AM</td>
-                                      </tr>
-                                      <tr>
-                                          <td
-                                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                              Ibad Chauhan</td>
-                                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Pune
-                                          </td>
-                                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">11:00
-                                              AM - 11:45 AM</td>
-                                      </tr>
-                                      <tr>
-                                          <td
-                                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                              Pradeep P</td>
-                                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                              Chennai</td>
-                                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">11:00
-                                              AM - 11:45 AM</td>
-                                      </tr>
-                                  </tbody>
-                              </table>
-                          </div>
-                      </div>
+                </div>
+                <div class="mt-8 flow-root">
+                  <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div
+                      class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8"
+                    >
+                      <table class="min-w-full divide-y divide-gray-300">
+                        <thead>
+                          <tr>
+                            <th
+                              scope="col"
+                              class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
+                            >
+                              Name
+                            </th>
+                            <th
+                              scope="col"
+                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                            >
+                              Dwell Time
+                            </th>
+                            <th
+                              scope="col"
+                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                            >
+                              Visited
+                            </th>
+                            <th
+                              scope="col"
+                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                            >
+                              Location
+                            </th>
+                            <th
+                              scope="col"
+                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                            >
+                              Date
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody
+                          class="divide-y divide-gray-200"
+                          id="people-table"
+                        ></tbody>
+                      </table>
+                    </div>
                   </div>
+                </div>
               </div>
-          </div>
-          <div id="object" class="">
+            </div>
+
+            <div id="object" class="">
               <div class="px-4 sm:px-6 lg:px-8">
-                  <div class="sm:flex sm:items-center">
-                      <div class="sm:flex-auto">
-                          <h1 class="text-base font-semibold leading-6 text-gray-900">Object</h1>
-                          <p class="mt-2 text-sm text-gray-700">A list of all the users in your account
-                              including their name, location and time.</p>
-                      </div>
-                      <div class="flex justify-end items-end">
-                        <div date-rangepicker class="flex items-center">
-                          <div class="relative">
-                            <div
-                              class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
-                            >
-                              <svg
-                                class="w-4 h-4 text-gray-500"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
-                                />
-                              </svg>
-                            </div>
-                            <input
-                              name="start"
-                              type="text"
-                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-1"
-                              placeholder="Select date start"
-                            />
-                          </div>
-                          <span class="mx-4 text-gray-500">to</span>
-                          <div class="relative">
-                            <div
-                              class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
-                            >
-                              <svg
-                                class="w-4 h-4 text-gray-500"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
-                                />
-                              </svg>
-                            </div>
-                            <input
-                              name="end"
-                              type="text"
-                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-1"
-                              placeholder="Select date end"
-                            />
-                          </div>
-                        </div>
-                        <div class="ml-2">
-                          <select
-                            id="location"
-                            name="location"
-                            class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                <div class="sm:flex sm:items-center">
+                  <div class="sm:flex-auto">
+                    <h1 class="text-base font-semibold leading-6 text-gray-900">
+                      Object
+                    </h1>
+                    <p class="mt-2 text-sm text-gray-700">
+                      A list of all the users in your account including their
+                      name, location and time.
+                    </p>
+                  </div>
+                  <div class="flex justify-end items-end">
+                    <div date-rangepicker class="flex items-center">
+                      <div class="relative">
+                        <div
+                          class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+                        >
+                          <svg
+                            class="w-4 h-4 text-gray-500"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
                           >
-                            <option>Filter by location</option>
-                            <option>Self</option>
-                            <option>Cupboard</option>
-                            <option>Kitchen</option>
-                          </select>
+                            <path
+                              d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                            />
+                          </svg>
                         </div>
-                        <div class="ml-2">
-                          <input type="text" name="objectname" id="objectname"
-                              class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                              placeholder="Search by object name" onkeyup='objectName()'>
+                        <input
+                          name="start"
+                          type="text"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-1"
+                          placeholder="Select date start"
+                        />
+                      </div>
+                      <span class="mx-4 text-gray-500">to</span>
+                      <div class="relative">
+                        <div
+                          class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+                        >
+                          <svg
+                            class="w-4 h-4 text-gray-500"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                            />
+                          </svg>
                         </div>
+                        <input
+                          name="end"
+                          type="text"
+                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-1"
+                          placeholder="Select date end"
+                        />
                       </div>
+                    </div>
+                    <div class="ml-2">
+                      <select
+                        id="object-location"
+                        name="location"
+                        class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      >
+                        <option>Filter by location</option>
+                      </select>
+                    </div>
+                    <div class="ml-2">
+                      <input
+                        type="text"
+                        name="objectname"
+                        id="objectname"
+                        class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        placeholder="Search by object name"
+                        onkeyup="objectName()"
+                      />
+                    </div>
                   </div>
-                  <div class="mt-8 flow-root">
-                      <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                          <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                              <table class="min-w-full divide-y divide-gray-300">
-                                  <thead>
-                                      <tr>
-                                          <th scope="col"
-                                              class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
-                                              Object Name</th>
-                                          <th scope="col"
-                                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                              Location</th>
-                                          <th scope="col"
-                                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                              Time Stamp</th>
-                                      </tr>
-                                  </thead>
-                                  <tbody class="divide-y divide-gray-200" id="objectstable">
-                                      <tr>
-                                          <td
-                                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                              Books</td>
-                                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Self
-                                          </td>
-                                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">11:00
-                                              AM - 11:45 AM</td>
-                                      </tr>
-                                      <tr>
-                                          <td
-                                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                              Glass</td>
-                                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Cupboard
-                                          </td>
-                                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">11:00
-                                              AM - 11:45 AM</td>
-                                      </tr>
-                                      <tr>
-                                          <td
-                                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                              Bottle</td>
-                                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                              Kitchen</td>
-                                          <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">11:00
-                                              AM - 11:45 AM</td>
-                                      </tr>
-                                  </tbody>
-                              </table>
-                          </div>
-                      </div>
+                </div>
+                <div class="mt-8 flow-root">
+                  <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div
+                      class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8"
+                    >
+                      <table class="min-w-full divide-y divide-gray-300">
+                        <thead>
+                          <tr>
+                            <th
+                              scope="col"
+                              class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
+                            >
+                              Name
+                            </th>
+                            <th
+                              scope="col"
+                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                            >
+                              Dwell Time
+                            </th>
+                            <th
+                              scope="col"
+                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                            >
+                              Visited
+                            </th>
+                            <th
+                              scope="col"
+                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                            >
+                              Location
+                            </th>
+                            <th
+                              scope="col"
+                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                            >
+                              Date
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody
+                          class="divide-y divide-gray-200"
+                          id="object-table"
+                        ></tbody>
+                      </table>
+                    </div>
                   </div>
+                </div>
               </div>
-          </div>
+            </div>
+
             <div id="alert" class="">
               <div class="px-4 sm:px-6 lg:px-8">
                 <div class="sm:flex sm:items-center">
@@ -1049,15 +662,15 @@
                       Alerts
                     </h1>
                     <p class="mt-2 text-sm text-gray-700">
-                      A list of all the Alerts including their
-                      Location, Smoke and Time.
+                      A list of all the Alerts including their Location, Smoke
+                      and Time.
                     </p>
                   </div>
                   <!-- <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
                     <button type="button" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add user</button>
                   </div> -->
 
-                  <div date-rangepicker class="flex items-center">
+                  <div class="flex items-center">
                     <div class="relative">
                       <div
                         class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
@@ -1076,7 +689,8 @@
                       </div>
                       <input
                         name="start"
-                        type="text"
+                        type="date"
+                        id="start-alerts"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-1"
                         placeholder="Select date start"
                       />
@@ -1100,7 +714,8 @@
                       </div>
                       <input
                         name="end"
-                        type="text"
+                        type="date"
+                        id="end-alerts"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-1"
                         placeholder="Select date end"
                       />
@@ -1108,18 +723,11 @@
                   </div>
                   <div class="ml-2">
                     <select
-                      id="location"
+                      id="alert-location"
                       name="location"
                       class="block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     >
                       <option>Filter by location</option>
-                      <option>Reception</option>
-                      <option>Cafeteria</option>
-                      <option>Meeting Room 1</option>
-                      <option>Meeting Room 2</option>
-                      <option>Office 1</option>
-                      <option>Office 2</option>
-                      <option>Unknown</option>
                     </select>
                   </div>
                 </div>
@@ -1133,6 +741,12 @@
                           <tr>
                             <th
                               scope="col"
+                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                            >
+                              #
+                            </th>
+                            <th
+                              scope="col"
                               class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
                             >
                               Location
@@ -1141,7 +755,7 @@
                               scope="col"
                               class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                             >
-                              Smoke
+                              Event
                             </th>
                             <th
                               scope="col"
@@ -1151,25 +765,10 @@
                             </th>
                           </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-200">
-                          <tr>
-                            <td
-                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
-                            >
-                              Reception
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              3.4
-                            </td>
-                            <td
-                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                            >
-                              12th Dec 2023 7:00 PM
-                            </td>
-                          </tr>
-                        </tbody>
+                        <tbody
+                          class="divide-y divide-gray-200"
+                          id="alert-table"
+                        ></tbody>
                       </table>
                     </div>
                   </div>
@@ -1180,6 +779,7 @@
         </main>
       </div>
     </div>
+    <script src="./dummy-data.js" type="text/javascript"></script>
     <script src="./index.js" type="text/javascript"></script>
   </body>
 </html>
