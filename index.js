@@ -40,7 +40,7 @@ function objectName() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("objectname");
   filter = input.value.toUpperCase();
-  table = document.getElementById("peoplestable");
+  table = document.getElementById("objectstable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
       td = tr[i].getElementsByTagName("td")[0];
