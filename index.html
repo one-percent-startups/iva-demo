@@ -27,8 +27,8 @@
                 <ul role="list" class="-mx-2 space-y-1">
                   <li>
                     <!-- Current: "bg-indigo-700 text-white", Default: "text-indigo-200 hover:text-white hover:bg-indigo-700" -->
-                    <a
-                      href="#"
+                    <span
+                      onclick="changeTab('dashboard')"
                       class="bg-indigo-700 text-white group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                     >
                       <svg
@@ -46,11 +46,11 @@
                         />
                       </svg>
                       Dashboard
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <span
+                      onclick="changeTab('location')"
                       class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                     >
                       <svg
@@ -68,11 +68,11 @@
                         />
                       </svg>
                       Location
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <span
+                    onclick="changeTab('people')"
                       class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                     >
                       <svg
@@ -90,11 +90,11 @@
                         />
                       </svg>
                       People
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <span
+                    onclick="changeTab('object')"
                       class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                     >
                       <svg
@@ -112,11 +112,11 @@
                         />
                       </svg>
                       Objects
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <span
+                    onclick="changeTab('alert')"
                       class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                     >
                       <svg
@@ -134,7 +134,7 @@
                         />
                       </svg>
                       Alerts
-                    </a>
+                    </span>
                   </li>
                 </ul>
               </li>
@@ -172,11 +172,35 @@
 
       <div class="pl-72">
         <main class="py-10">
-          <div class="px-4 sm:px-6 px-8">
+          <div id="main" class="px-4 sm:px-6 px-8">
             <!-- Your content -->
+            <div id="dashboard" class=""><div>Dashboard</div></div>
+            <div id="location" class="">Locations</div>
+            <div id="people" class="">People</div>
+            <div id="object" class="">Objects</div>
+            <div id="alert" class="">Alerts</div>
           </div>
         </main>
       </div>
     </div>
+    <script>
+      let currentTab = "dashboard";
+      let mainContainer = document.getElementById("main");
+      let sections = mainContainer.querySelectorAll(":scope > div");
+
+      function changeTab(tab) {
+        sections.forEach((div) => {
+          if (div.id === tab) {
+            div.classList.remove("hidden");
+            div.classList.add("block");
+          } else {
+            div.classList.remove("block");
+            div.classList.add("hidden");
+          }
+        });
+      }
+
+      changeTab(currentTab);
+    </script>
   </body>
 </html>
