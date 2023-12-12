@@ -6,6 +6,7 @@
     <title>IVA - Dem</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/datepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   </head>
   <body class="h-full">
     <div>
@@ -161,7 +162,7 @@
                     </p>
                   </div>
                 </div>
-                <div class="flex justify-end items-end">
+                <!-- <div class="flex justify-end items-end">
                   <div date-rangepicker class="flex items-center">
                     <div class="relative">
                       <div
@@ -219,6 +220,114 @@
                     >
                       <option>Filter by location</option>
                     </select>
+                  </div>
+                </div> -->
+                <div class="flex items-center w-full">
+                  <div class="w-full bg-white rounded-lg shadow p-4 p-6">
+                    <div class="flex justify-between">
+                      <div>
+                        <h5
+                          class="leading-none text-3xl font-bold text-gray-900 pb-2"
+                        >
+                          240
+                        </h5>
+                        <p class="text-base font-normal text-gray-500">
+                          Total Visitors
+                        </p>
+                      </div>
+                      <div
+                        class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 text-center"
+                      >
+                        12%
+                        <svg
+                          class="w-3 h-3 ms-1"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 10 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M5 13V1m0 0L1 5m4-4 4 4"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <div id="area-chart"></div>
+                  </div>
+
+                  <div class="w-full bg-white rounded-lg shadow p-4 md:p-6">
+                    <div class="flex justify-between">
+                      <div>
+                        <h5
+                          class="leading-none text-3xl font-bold text-gray-900 pb-2"
+                        >
+                          42
+                        </h5>
+                        <p class="text-base font-normal text-gray-500">
+                          Average Visitors
+                        </p>
+                      </div>
+                      <div
+                        class="flex items-center px-2.5 py-0.5 text-base font-semibold text-red-500 text-center"
+                      >
+                        12%
+                        <svg
+                          class="w-3 h-3 ms-1"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 384 512"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <div id="area-chart1"></div>
+                  </div>
+
+                  <div class="w-full bg-white rounded-lg shadow p-4 md:p-6">
+                    <div class="flex justify-between">
+                      <div>
+                        <h5
+                          class="leading-none text-3xl font-bold text-gray-900 pb-2"
+                        >
+                          1m
+                        </h5>
+                        <p class="text-base font-normal text-gray-500">
+                          Average duration
+                        </p>
+                      </div>
+                      <div
+                        class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 text-center"
+                      >
+                        12%
+                        <svg
+                          class="w-3 h-3 ms-1"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 10 14"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M5 13V1m0 0L1 5m4-4 4 4"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <div id="area-chart2"></div>
                   </div>
                 </div>
                 <div class="mt-8 flow-root">
@@ -282,7 +391,7 @@
                     <button type="button" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add user</button>
                   </div> -->
 
-                  <div date-rangepicker class="flex items-center">
+                  <!-- <div date-rangepicker class="flex items-center">
                     <div class="relative">
                       <div
                         class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
@@ -339,7 +448,7 @@
                     >
                       <option>Filter by location</option>
                     </select>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="mt-8 flow-root">
                   <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -398,7 +507,7 @@
                       name, location and time.
                     </p>
                   </div>
-                  <div class="flex justify-end items-end">
+                  <!-- <div class="flex justify-end items-end">
                     <div date-rangepicker class="flex items-center">
                       <div class="relative">
                         <div
@@ -467,7 +576,7 @@
                         onkeyup="changeName()"
                       />
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="mt-8 flow-root">
                   <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -532,7 +641,7 @@
                       name, location and time.
                     </p>
                   </div>
-                  <div class="flex justify-end items-end">
+                  <!-- <div class="flex justify-end items-end">
                     <div date-rangepicker class="flex items-center">
                       <div class="relative">
                         <div
@@ -601,7 +710,7 @@
                         onkeyup="objectName()"
                       />
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="mt-8 flow-root">
                   <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -670,7 +779,7 @@
                     <button type="button" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add user</button>
                   </div> -->
 
-                  <div class="flex items-center">
+                  <!-- <div class="flex items-center">
                     <div class="relative">
                       <div
                         class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
@@ -729,7 +838,7 @@
                     >
                       <option>Filter by location</option>
                     </select>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="mt-8 flow-root">
                   <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

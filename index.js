@@ -1,40 +1,169 @@
+
+window.addEventListener("load", function () {
+  let options = {
+    chart: {
+      height: "100%",
+      maxWidth: "100%",
+      type: "area",
+      fontFamily: "Inter, sans-serif",
+      dropShadow: {
+        enabled: false,
+      },
+      toolbar: {
+        show: false,
+      },
+    },
+    tooltip: {
+      enabled: true,
+      x: {
+        show: false,
+      },
+    },
+    fill: {
+      type: "gradient",
+      gradient: {
+        opacityFrom: 0.55,
+        opacityTo: 0,
+        shade: "#1C64F2",
+        gradientToColors: ["#1C64F2"],
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      width: 6,
+    },
+    grid: {
+      show: false,
+      strokeDashArray: 4,
+      padding: {
+        left: 2,
+        right: 2,
+        top: 0,
+      },
+    },
+    series: [
+      {
+        name: "Daily visitor",
+        data: [32, 60, 30, 21, 44, 53],
+        color: "#1A56DB",
+      },
+    ],
+    xaxis: {
+      categories: [
+        "01 February",
+        "02 February",
+        "03 February",
+        "04 February",
+        "05 February",
+        "06 February",
+        "07 February",
+      ],
+      labels: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+    },
+    yaxis: {
+      show: false,
+    },
+  };
+
+  let options1 = {
+    ...options,
+    series: [
+      {
+        name: "Daily visitors",
+        data: [32, 60, 30, 21, 44, 53],
+        color: "#F04438",
+      },
+    ],
+  };
+  let options2 = {
+    ...options,
+    series: [
+      {
+        name: "Visit duration",
+        data: [53, 44, 33, 21, 45, 53],
+        color: "#1A56DB",
+      },
+    ],
+  };
+  if (
+    document.getElementById("area-chart") &&
+    typeof ApexCharts !== "undefined"
+  ) {
+    const chart = new ApexCharts(
+      document.getElementById("area-chart"),
+      options
+    );
+    chart.render();
+  }
+  if (
+    document.getElementById("area-chart1") &&
+    typeof ApexCharts !== "undefined"
+  ) {
+    const chart = new ApexCharts(
+      document.getElementById("area-chart1"),
+      options1
+    );
+    chart.render();
+  }
+  if (
+    document.getElementById("area-chart2") &&
+    typeof ApexCharts !== "undefined"
+  ) {
+    const chart = new ApexCharts(
+      document.getElementById("area-chart2"),
+      options2
+    );
+    chart.render();
+  }
+});
+
 let currentTab = "dashboard";
 let mainContainer = document.getElementById("main");
 let sections = mainContainer.querySelectorAll(":scope > div");
 let navContainer = document.getElementById('navigation-items')
 let navItems = navContainer.querySelectorAll(":scope > li")
-let dashboardLocation = document.getElementById("dashboard-location");
-let locationLocation = document.getElementById("location-location");
-let peopleLocation = document.getElementById("people-location");
-let objectLocation = document.getElementById("object-location");
+// let dashboardLocation = document.getElementById("dashboard-location");
+// let locationLocation = document.getElementById("location-location");
+// let peopleLocation = document.getElementById("people-location");
+// let objectLocation = document.getElementById("object-location");
 
 let dashboardTable = document.getElementById("dashboard-table");
 let lcoationTable = document.getElementById("location-table")
 let peopleTable = document.getElementById('people-table')
 let objectTable = document.getElementById('object-table')
 
-let locations = [];
-let alertFilter = {
-  startDate: "",
-  endDate: "",
-  location: "",
-};
+// let locations = [];
+// let alertFilter = {
+//   startDate: "",
+//   endDate: "",
+//   location: "",
+// };
 
-function getLocationsFromLogs(logs) {
-  let locations = [];
-  logs.forEach((l) => {
-    if (!locations.includes(l.Location)) {
-      locations.push(l.Location);
-      let option = document.createElement("option");
-      option.value = l.Location;
-      option.textContent = l.Location;
-      dashboardLocation.appendChild(option.cloneNode(true));
-      locationLocation.appendChild(option.cloneNode(true));
-      peopleLocation.appendChild(option.cloneNode(true));
-      objectLocation.appendChild(option);
-    }
-  });
-}
+// function getLocationsFromLogs(logs) {
+//   let locations = [];
+//   logs.forEach((l) => {
+//     if (!locations.includes(l.Location)) {
+//       locations.push(l.Location);
+//       let option = document.createElement("option");
+//       option.value = l.Location;
+//       option.textContent = l.Location;
+//       // dashboardLocation.appendChild(option.cloneNode(true));
+//       // locationLocation.appendChild(option.cloneNode(true));
+//       // peopleLocation.appendChild(option.cloneNode(true));
+//       // objectLocation.appendChild(option);
+//     }
+//   });
+// }
 function makeDataForDashboard() {
   let logs = Logs;
   let locDate = {};
@@ -268,13 +397,13 @@ function getAlerts(alerts) {
   let alertTable = document.getElementById("alert-table");
   alertTable.innerHTML = "";
   alerts.forEach((a, idx) => {
-    if (!locations.includes(a.location)) {
-      locations.push(a.location);
-      let option = document.createElement("option");
-      option.value = a.location;
-      option.textContent = a.location;
-      alertLocation.append(option);
-    }
+    // if (!locations.includes(a.location)) {
+    //   locations.push(a.location);
+    //   let option = document.createElement("option");
+    //   option.value = a.location;
+    //   option.textContent = a.location;
+    //   alertLocation.append(option);
+    // }
     let classes = [
       "whitespace-nowrap",
       "px-3",
@@ -311,54 +440,52 @@ function getAlerts(alerts) {
     alertTable.appendChild(row);
   });
 }
-function filterAlerts(filter) {
-  if (filter.startDate || filter.endDate || filter.location) {
-    let alerts = Alerts;
-    if (!!filter.location && filter.location !== "Filter by location")
-      alerts = Alerts.filter((a) => a.location === filter.location);
-    if (filter.startDate)
-      alerts = alerts.filter(
-        (a) => new Date(a.date) >= new Date(filter.startDate)
-      );
-    if (filter.endDate)
-      alerts = alerts.filter(
-        (a) => new Date(filter.endDate) >= new Date(a.date)
-      );
-    getAlerts(alerts);
-  } else getAlerts(Alerts);
-}
-function filterAlertsByLocation(location) {
-  alertFilter["location"] = location;
-  filterAlerts(alertFilter);
-}
-function filterAlertsByStartDate(startDate) {
-  alertFilter["startDate"] = startDate;
-  filterAlerts(alertFilter);
-}
-function filterAlertsByEndDate(endDate) {
-  alertFilter["endDate"] = endDate;
-  filterAlerts(alertFilter);
-}
+// function filterAlerts(filter) {
+//   if (filter.startDate || filter.endDate || filter.location) {
+//     let alerts = Alerts;
+//     if (!!filter.location && filter.location !== "Filter by location")
+//       alerts = Alerts.filter((a) => a.location === filter.location);
+//     if (filter.startDate)
+//       alerts = alerts.filter(
+//         (a) => new Date(a.date) >= new Date(filter.startDate)
+//       );
+//     if (filter.endDate)
+//       alerts = alerts.filter(
+//         (a) => new Date(filter.endDate) >= new Date(a.date)
+//       );
+//     getAlerts(alerts);
+//   } else getAlerts(Alerts);
+// }
+// function filterAlertsByLocation(location) {
+//   alertFilter["location"] = location;
+//   filterAlerts(alertFilter);
+// }
+// function filterAlertsByStartDate(startDate) {
+//   alertFilter["startDate"] = startDate;
+//   filterAlerts(alertFilter);
+// }
+// function filterAlertsByEndDate(endDate) {
+//   alertFilter["endDate"] = endDate;
+//   filterAlerts(alertFilter);
+// }
 
 makeDataForDashboard();
 locationData()
 peopleData()
 objectData()
-getLocationsFromLogs(Logs);
+// getLocationsFromLogs(Logs);
 changeTab(currentTab);
 
-let alertLocation = document.getElementById("alert-location");
-alertLocation.addEventListener("change", (e) =>
-  filterAlertsByLocation(e.target.value)
-);
-let alertStart = document.getElementById("start-alerts");
-alertStart.addEventListener("change", (e) =>
-  filterAlertsByStartDate(e.target.value)
-);
-let alertEnd = document.getElementById("end-alerts");
-alertEnd.addEventListener("change", (e) =>
-  filterAlertsByEndDate(e.target.value)
-);
+// let alertLocation = document.getElementById("alert-location");
+// alertLocation.addEventListener("change", (e) =>
+//   filterAlertsByLocation(e.target.value)
+// );
+// let alertStart = document.getElementById("start-alerts");
+// alertStart.addEventListener("change", (e) =>
+//   filterAlertsByStartDate(e.target.value)
+// );
+// let alertEnd = document.getElementById("end-alerts");
+// alertEnd.addEventListener("change", (e) =>
+//   filterAlertsByEndDate(e.target.value)
+// );
 getAlerts(Alerts);
-
-
