@@ -72,7 +72,7 @@
                   </li>
                   <li>
                     <span
-                    onclick="changeTab('people')"
+                      onclick="changeTab('people')"
                       class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                     >
                       <svg
@@ -94,7 +94,7 @@
                   </li>
                   <li>
                     <span
-                    onclick="changeTab('object')"
+                      onclick="changeTab('object')"
                       class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                     >
                       <svg
@@ -116,7 +116,7 @@
                   </li>
                   <li>
                     <span
-                    onclick="changeTab('alert')"
+                      onclick="changeTab('alert')"
                       class="text-indigo-200 hover:text-white hover:bg-indigo-700 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                     >
                       <svg
@@ -174,7 +174,210 @@
         <main class="py-10">
           <div id="main" class="px-4 sm:px-6 px-8">
             <!-- Your content -->
-            <div id="dashboard" class=""><div>Dashboard</div></div>
+            <div id="dashboard" class="">
+              <div class="px-4 sm:px-6 lg:px-8">
+                <div class="sm:flex sm:items-center">
+                  <div class="sm:flex-auto">
+                    <h1 class="text-base font-semibold leading-6 text-gray-900">
+                      Dashboard
+                    </h1>
+                    <p class="mt-2 text-sm text-gray-700">
+                      A place to see all footfall for every location with an
+                      average dwell time
+                    </p>
+                  </div>
+                </div>
+                <div class="flex justify-end items-end">
+                  <div class="mr-2">
+                    <label
+                      for="location"
+                      class="block text-sm font-medium leading-6 text-gray-900"
+                      >Location</label
+                    >
+                    <select
+                      id="location"
+                      name="location"
+                      class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    >
+                      <option>Filter by location</option>
+                      <option>United States</option>
+                      <option>Canada</option>
+                      <option>Mexico</option>
+                    </select>
+                  </div>
+                  <div date-rangepicker class="flex items-center">
+                    <div class="mr-2">
+                      <label
+                        for="start-date"
+                        class="block text-sm font-medium leading-6 text-gray-900"
+                        >Start date</label
+                      >
+                      <input
+                        name="start"
+                        type="date"
+                        id="start-date"
+                        class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        placeholder="Select date start"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        for="end-date"
+                        class="block text-sm font-medium leading-6 text-gray-900"
+                        >End date</label
+                      >
+                      <input
+                        id="end-date"
+                        name="end"
+                        type="date"
+                        class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        placeholder="Select date end"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-8 flow-root">
+                  <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div
+                      class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8"
+                    >
+                      <table class="min-w-full divide-y divide-gray-300">
+                        <thead>
+                          <tr>
+                            <th
+                              scope="col"
+                              class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
+                            >
+                              <a href="#" class="group inline-flex">
+                                Location
+                                <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
+                                <span
+                                  class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible"
+                                >
+                                  <svg
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    aria-hidden="true"
+                                  >
+                                    <path
+                                      fill-rule="evenodd"
+                                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                      clip-rule="evenodd"
+                                    />
+                                  </svg>
+                                </span>
+                              </a>
+                            </th>
+                            <th
+                              scope="col"
+                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                            >
+                              <a href="#" class="group inline-flex">
+                                Footfall
+                                <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
+                                <span
+                                  class="ml-2 flex-none rounded bg-gray-100 text-gray-900 group-hover:bg-gray-200"
+                                >
+                                  <svg
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    aria-hidden="true"
+                                  >
+                                    <path
+                                      fill-rule="evenodd"
+                                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                      clip-rule="evenodd"
+                                    />
+                                  </svg>
+                                </span>
+                              </a>
+                            </th>
+                            <th
+                              scope="col"
+                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                            >
+                              <a href="#" class="group inline-flex">
+                                Average dwell time
+                                <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
+                                <span
+                                  class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible"
+                                >
+                                  <svg
+                                    class="invisible ml-2 h-5 w-5 flex-none rounded text-gray-400 group-hover:visible group-focus:visible"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    aria-hidden="true"
+                                  >
+                                    <path
+                                      fill-rule="evenodd"
+                                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                      clip-rule="evenodd"
+                                    />
+                                  </svg>
+                                </span>
+                              </a>
+                            </th>
+                            <th
+                              scope="col"
+                              class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                            >
+                              <a href="#" class="group inline-flex">
+                                Date time
+                                <!-- Active: "bg-gray-200 text-gray-900 group-hover:bg-gray-300", Not Active: "invisible text-gray-400 group-hover:visible group-focus:visible" -->
+                                <span
+                                  class="invisible ml-2 flex-none rounded text-gray-400 group-hover:visible group-focus:visible"
+                                >
+                                  <svg
+                                    class="invisible ml-2 h-5 w-5 flex-none rounded text-gray-400 group-hover:visible group-focus:visible"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    aria-hidden="true"
+                                  >
+                                    <path
+                                      fill-rule="evenodd"
+                                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                      clip-rule="evenodd"
+                                    />
+                                  </svg>
+                                </span>
+                              </a>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 bg-white">
+                          <tr>
+                            <td
+                              class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
+                            >
+                              Location 1
+                            </td>
+                            <td
+                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                            >
+                              34
+                            </td>
+                            <td
+                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                            >
+                              3.5 minutes
+                            </td>
+                            <td
+                              class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                            >
+                              10 Dec, 2023, 2:45pm
+                            </td>
+                          </tr>
+
+                          <!-- More people... -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div id="location" class="">Locations</div>
             <div id="people" class="">People</div>
             <div id="object" class="">Objects</div>
@@ -183,24 +386,6 @@
         </main>
       </div>
     </div>
-    <script>
-      let currentTab = "dashboard";
-      let mainContainer = document.getElementById("main");
-      let sections = mainContainer.querySelectorAll(":scope > div");
-
-      function changeTab(tab) {
-        sections.forEach((div) => {
-          if (div.id === tab) {
-            div.classList.remove("hidden");
-            div.classList.add("block");
-          } else {
-            div.classList.remove("block");
-            div.classList.add("hidden");
-          }
-        });
-      }
-
-      changeTab(currentTab);
-    </script>
+    <script src="./index.js" type="text/javascript"></script>
   </body>
 </html>
